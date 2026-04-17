@@ -1,0 +1,78 @@
+{
+  "name": "woowoops",
+  "displayName": "Woo Woops",
+  "description": "Plays a sound when your code has errors or runs successfully.",
+  "version": "1.0.0",
+  "publisher": "AhmadMasoodShujra",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Other"],
+  "keywords": ["sound", "audio", "error", "notification", "fun"],
+  "icon": "icon.png",
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ahmadmasoodshujra/woowoops"
+  },
+  "contributes": {
+    "configuration": {
+      "title": "Woo Woops",
+      "properties": {
+        "wooWoops.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable Woo Woops"
+        },
+        "wooWoops.errorSoundPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to a custom .wav sound file for errors (leave blank to use built-in)"
+        },
+        "wooWoops.successSoundPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to a custom .wav sound file for successful runs (leave blank to use built-in)"
+        },
+        "wooWoops.volume": {
+          "type": "number",
+          "default": 100,
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Volume level (0-100)"
+        },
+        "wooWoops.playOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Play error sound on file save if errors exist"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "wooWoops.testSuccess",
+        "title": "Woo Woops: Test Success Sound"
+      },
+      {
+        "command": "wooWoops.testError",
+        "title": "Woo Woops: Test Error Sound"
+      },
+      {
+        "command": "wooWoops.toggle",
+        "title": "Woo Woops: Toggle On/Off"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.80.0",
+    "@vscode/vsce": "^2.24.0",
+    "typescript": "^5.0.0"
+  }
+}
